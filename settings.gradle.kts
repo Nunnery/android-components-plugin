@@ -76,8 +76,8 @@ gradle.rootProject {
   apply<com.gradle.scan.plugin.BuildScanPlugin>()
 
   configure<com.gradle.scan.plugin.BuildScanExtension> {
-    setTermsOfServiceUrl("https://gradle.com/terms-of-service")
-    setTermsOfServiceAgree("yes")
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
     publishAlways()
   }
 }

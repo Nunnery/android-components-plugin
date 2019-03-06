@@ -182,11 +182,11 @@ internal class AndroidComponentsPluginTest {
     assertThat(buildResult.output).apply {
 
       contains("""
-        |debugCompileClasspath - Resolved configuration for compilation for variant: debug
-        |\--- com.trevjonez:and-lib:0.1.0
-        |     \--- com.trevjonez:and-lib_debug:0.1.0
-        |          \--- io.reactivex.rxjava2:rxjava:2.2.0
-        |               \--- org.reactivestreams:reactive-streams:1.0.2
+          |debugCompileClasspath - Resolved configuration for compilation for variant: debug
+          |+--- com.trevjonez:and-lib:0.1.0
+          ||    \--- com.trevjonez:and-lib_debug:0.1.0
+          ||         \--- io.reactivex.rxjava2:rxjava:2.2.0
+          ||              \--- org.reactivestreams:reactive-streams:1.0.2
     """.trimMargin())
 
       contains("""
@@ -206,10 +206,10 @@ internal class AndroidComponentsPluginTest {
 
       contains("""
         |releaseCompileClasspath - Resolved configuration for compilation for variant: release
-        |\--- com.trevjonez:and-lib:0.1.0
-        |     \--- com.trevjonez:and-lib_release:0.1.0
-        |          \--- io.reactivex.rxjava2:rxjava:2.2.0
-        |               \--- org.reactivestreams:reactive-streams:1.0.2
+          |+--- com.trevjonez:and-lib:0.1.0
+          ||    \--- com.trevjonez:and-lib_release:0.1.0
+          ||         \--- io.reactivex.rxjava2:rxjava:2.2.0
+          ||              \--- org.reactivestreams:reactive-streams:1.0.2
     """.trimMargin())
 
       contains("""
@@ -261,11 +261,11 @@ internal class AndroidComponentsPluginTest {
 
 
       contains("""
-        |debugCompileClasspath - Resolved configuration for compilation for variant: debug
-        |\--- com.trevjonez:and-lib:0.1.0
-        |     \--- com.trevjonez:and-lib_blue_debug:0.1.0
-        |          \--- io.reactivex.rxjava2:rxjava:2.2.0
-        |               \--- org.reactivestreams:reactive-streams:1.0.2
+          |debugCompileClasspath - Resolved configuration for compilation for variant: debug
+          |+--- com.trevjonez:and-lib:0.1.0
+          ||    \--- com.trevjonez:and-lib_blue_release:0.1.0
+          ||         \--- io.reactivex.rxjava2:rxjava:2.2.0
+          ||              \--- org.reactivestreams:reactive-streams:1.0.2
     """.trimMargin())
 
       contains("""
@@ -285,10 +285,10 @@ internal class AndroidComponentsPluginTest {
 
       contains("""
         |releaseCompileClasspath - Resolved configuration for compilation for variant: release
-        |\--- com.trevjonez:and-lib:0.1.0
-        |     \--- com.trevjonez:and-lib_blue_release:0.1.0
-        |          \--- io.reactivex.rxjava2:rxjava:2.2.0
-        |               \--- org.reactivestreams:reactive-streams:1.0.2
+          |+--- com.trevjonez:and-lib:0.1.0
+          ||    \--- com.trevjonez:and-lib_blue_release:0.1.0
+          ||         \--- io.reactivex.rxjava2:rxjava:2.2.0
+          ||              \--- org.reactivestreams:reactive-streams:1.0.2
     """.trimMargin())
 
       contains("""

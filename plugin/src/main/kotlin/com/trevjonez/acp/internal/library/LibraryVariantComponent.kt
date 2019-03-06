@@ -25,6 +25,7 @@ import org.gradle.api.artifacts.ModuleVersionIdentifier
 import org.gradle.api.attributes.Usage.*
 import org.gradle.api.file.FileCollection
 import org.gradle.api.internal.component.UsageContext
+import org.gradle.api.logging.Logging
 import org.gradle.api.plugins.JavaPlugin.API_ELEMENTS_CONFIGURATION_NAME
 import org.gradle.api.plugins.JavaPlugin.RUNTIME_ELEMENTS_CONFIGURATION_NAME
 import org.gradle.api.tasks.TaskProvider
@@ -36,12 +37,15 @@ internal class LibraryVariantComponent(
     override val compFactory: LibraryComponentFactory,
     val sourcesTask: TaskProvider<out AbstractArchiveTask>
 ) : AndroidVariantComponent {
+    private val logger = Logging.getLogger(LibraryVariantComponent::class.java)
 
   override fun getName(): String =
       variant.name
 
-  override fun getOutputs(): FileCollection =
-      variant.packageLibrary.outputs.files
+  override fun getOutputs(): FileCollection {
+      logger.lifecycle("getting outputs for variant ${variant.name}")
+      return variant.packageLibraryProvider.get().outputs.files
+  }
 
   override fun getCoordinates(): ModuleVersionIdentifier {
     return compFactory.moduleVersionIdentifier("_${variant.combinedNames}")
@@ -76,7 +80,7 @@ internal class LibraryVariantComponent(
         variant.outputs
             .map {
               LibraryPublishArtifact(it.outputType, it.outputFile)
-                  .builtBy(it.assemble)
+                  .builtBy(variant.assembleProvider.get())
             }
             .toSet()
       }
